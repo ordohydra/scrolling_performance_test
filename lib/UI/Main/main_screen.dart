@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:scrolling_performance_test/Managers/Feed/API/feed_manager.dart';
+
+final class MainScreenDeps {
+  FeedManager feedManager;
+
+  MainScreenDeps({required this.feedManager});
+}
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key, required this.title});
+  MainScreen({super.key, deps = MainScreenDeps})
+    : _feedManager = deps.feedManager;
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -12,7 +20,7 @@ class MainScreen extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
+  final FeedManager _feedManager;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -46,9 +54,6 @@ class _MainScreenState extends State<MainScreen> {
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

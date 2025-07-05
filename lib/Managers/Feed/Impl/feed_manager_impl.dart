@@ -10,7 +10,7 @@ final class NetworkServiceImplDeps {
 }
 
 final class FeedManagerImpl implements FeedManager {
-  NetworkService _networkService;
+  final NetworkService _networkService;
 
   FeedManagerImpl({required NetworkServiceImplDeps deps})
     : _networkService = deps.networkService;
